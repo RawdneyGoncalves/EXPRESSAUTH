@@ -51,11 +51,8 @@ hash({ password: '29042002' }, function (err, pass, salt, hash) {
 function authenticate(name, pass, fn) {
     if (!module.parent) console.log('authenticating %s:%s', name, pass);
     const user = users[name];
-    // query do banco de dados á consulta
     if (!user) return fn(null, null)
-    // 
-    //
-    // 
+  
     hash({ password: pass, salt: user.salt }, function (err, pass, salt, hash) {
       if (err) return fn(err);
       if (hash === user.hash) return fn(null, user)
@@ -81,8 +78,6 @@ function authenticate(name, pass, fn) {
   });
   
   app.get('/logout', function(req, res){
-    // destroy the user's session to log them out
-    // will be re-created next request
     req.session.destroy(function(){
       res.redirect('/');
     });
@@ -96,12 +91,7 @@ function authenticate(name, pass, fn) {
     authenticate(req.body.username, req.body.password, function(err, user){
       if (err) return next(err)
       if (user) {
-        // Regenerate session when signing in
-        // to prevent fixation
         req.session.regenerate(function(){
-          // Store the user's primary key
-          // in the session store to be retrieved,
-          // or in this case the entire user object
           req.session.user = user;
           req.session.success = 'Logado: ' + user.name
             + ' clique em  <a href="/logout">logout</a> para desconectar. '
