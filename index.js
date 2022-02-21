@@ -99,9 +99,9 @@ function authenticate(name, pass, fn) {
           res.redirect('back');
         });
       } else {
-        req.session.error = 'Login falido, veirifique  '
+        req.session.error = 'Login falhou, verifique seu login/senha e tente novamente'
           + ' login e senha.'
-          + ' (use "rawdney" and "foobar")';
+          + ' (use "rawdney" ou "foobar")';
         res.redirect('/login');
       }
     });
