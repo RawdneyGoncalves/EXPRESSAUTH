@@ -1,6 +1,6 @@
 
 const express = require('express');
-const hash = require('pbkdf2-password')()
+const hash = require('pbkdf2-password')
 const path = require('path');
 const session = require('express-session');
 const ejs = require('ejs');
