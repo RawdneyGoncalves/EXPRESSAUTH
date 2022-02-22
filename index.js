@@ -7,7 +7,7 @@ const ejs = require('ejs');
 const app = module.exports = express();
 const PORT = process.env.PORT || 3000
 
-//config 
+//configuração
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -19,7 +19,7 @@ app.use(session({
     saveUninitialized: false, 
     secret: 'senha secreta'
 }));
-// messagem middleware
+// messagem do middleware
 
 app.use(function(req, res, next){
     const err = req.session.error;
@@ -32,7 +32,7 @@ app.use(function(req, res, next){
     next();
   });
 
-  // database
+  // banco de dados
 const users = { 
     rawdney: { name: 'rawdney'}
 };
