@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(session({
     resave:false, 
     saveUninitialized: false, 
-    secret: 'shhhh, very secret'
+    secret: 'senha secreta'
 }));
 // messagem middleware
 
