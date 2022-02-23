@@ -101,7 +101,7 @@ function authenticate(name, pass, fn) {
       } else {
         req.session.error = 'Login falhou, verifique seu login/senha e tente novamente'
           + ' login e senha.'
-          + ' (use "rawdney" ou "foobar")';
+          + ' (use "rawdney")';
         res.redirect('/login');
       }
     });
